@@ -1,31 +1,42 @@
-# Thinning Algorithm
+# Thinning Algorithm - Image Skeletonization
 
-## Overview
-This script applies a thinning algorithm to binary images. Thinning is a morphological operation that reduces the thickness of foreground objects while preserving their connectivity. The implemented algorithm iteratively removes pixels from the edges of foreground objects until no further changes occur.
+This repository contains code for a thinning algorithm used for image skeletonization. Skeletonization aims to extract the one-pixel thick centerline of a shape in a binary image.
 
-## Requirements
-- Node.js installed on your system
+## Dependencies:
 
-## Installation
-1. Clone or download the repository.
-2. Navigate to the project directory in your terminal.
+* Sharp: [https://www.npmjs.com/package/sharp](https://www.npmjs.com/package/sharp)
+* readline: Built-in Node.js module
 
-## Usage
-1. Ensure you have a binary image file as input. The image should be in grayscale format, where foreground objects are represented by white pixels (pixel value = 255) and background by black pixels (pixel value = 0).
-2. Run the script using Node.js. You will be prompted to enter the path to the input image file.
-3. The script processes the image using the thinning algorithm.
-4. The resulting thinned image is saved as "output.jpeg" in the current directory.
+## How to Use:
 
-## Example
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run the script:
+
 ```bash
 npm start
 ```
 
-## Notes
-- The input image should be in PNG format.
-- The output image is saved in JPEG format.
+3. The script will prompt you for the input image file. Ensure the file exists in the same directory.
 
+4. After processing, a new file named "output.jpeg" will be created containing the thinned image.
 
-## Credits
-- This script utilizes the Sharp library for image processing.
+### Description:
 
+* The `thinning` function implements a thinning algorithm to iteratively remove pixels from the foreground while preserving the overall shape.
+* The `main` function reads an image, preprocesses it by converting to grayscale, resizing, and binarizing, then applies the thinning algorithm and saves the resulting skeleton as a new image.
+
+###  Notes:
+
+* This code implements a basic thinning algorithm. There are many other thinning algorithms with different properties.
+* The `threshold` value in `main.js` controls the binarization process. You might need to adjust this value depending on your image data.
+
+**Further Improvements:**
+
+* Implement support for different image formats.
+* Allow users to specify the output filename.
+* Explore and integrate more advanced thinning algorithms.
